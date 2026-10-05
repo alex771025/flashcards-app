@@ -3,6 +3,7 @@ const answerBtn = document.getElementById("answerBtn");
 const answerText = document.getElementById("answerText");
 const nextCardBtn = document.getElementById("nextCardBtn");
 const restartBtn = document.getElementById("restartBtn");
+const previousBtn = document.getElementById("previousBtn");
 const cardCounter = document.getElementById("cardCounter");
 const userAnswer = document.getElementById("userAnswer");
 
@@ -256,6 +257,11 @@ function showCard(){
     userAnswer.value = "";
     questionText.textContent = questions[currentQuestionIndex].text;
     cardCounter.textContent = `Карта ${currentQuestionIndex + 1} от ${questions.length}`;
+    if(currentQuestionIndex === 0){
+        previousBtn.disabled = true;
+    } else {
+        previousBtn.disabled = false;
+    }
     
 }
 answerBtn.addEventListener("click", ()=> {
@@ -270,6 +276,7 @@ nextCardBtn.addEventListener("click", ()=> {
         answerText.textContent = ""
         answerBtn.disabled = true;
         nextCardBtn.disabled = true;
+        previousBtn.disabled = true;
         return;
     }
     showCard();
@@ -279,6 +286,11 @@ restartBtn.addEventListener("click", ()=> {
     currentQuestionIndex = 0;
     answerBtn.disabled = false;
     nextCardBtn.disabled = false;
+    showCard();
+})
+
+previousBtn.addEventListener("click", ()=> {
+    currentQuestionIndex--;
     showCard();
 })
 showCard();

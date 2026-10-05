@@ -201,3 +201,13 @@ label[for="userAnswer"] {
 
     resize: vertical;   /* Позволява ръчна промяна само на височината */
 }
+
+#previousBtn {
+    background-color: #116b59; /* Зелен фон като „Следваща карта“ */
+    color: white;              /* Бял текст */
+}
+
+#previousBtn:hover:not(:disabled) {
+    background-color: #0b5143; /* По-тъмен фон при посочване,
+                                 само когато бутонът е активен */
+}
